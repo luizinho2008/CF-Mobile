@@ -38,8 +38,10 @@ public class TelaCPF extends AppCompatActivity {
         if (args.length > 0 && args[0] instanceof JSONObject) {
             JSONObject data = (JSONObject) args[0];
             String nome = data.optString("nome", data.optString("name", "Desconhecido"));
-            Toast.makeText(TelaCPF.this, "CPF válido! Usuário: " + nome, Toast.LENGTH_SHORT).show();
+            String cpf = data.optString("cpf", "CPF não disponível");
+            Toast.makeText(TelaCPF.this, "CPF válido! Usuário: " + nome + " CPF: " + cpf, Toast.LENGTH_SHORT).show();
             // Você pode navegar para a próxima tela aqui
+            Informations.CPF = cpf;
         } else {
             Toast.makeText(TelaCPF.this, "Resposta inválida do servidor", Toast.LENGTH_SHORT).show();
         }
