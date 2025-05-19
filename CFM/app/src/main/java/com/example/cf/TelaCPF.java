@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,11 @@ public class TelaCPF extends AppCompatActivity {
             Toast.makeText(TelaCPF.this, "CPF válido! Usuário: " + nome + " CPF: " + cpf, Toast.LENGTH_SHORT).show();
             // Você pode navegar para a próxima tela aqui
             Informations.CPF = cpf;
+            Informations.nome = nome;
+
+            Intent intent = new Intent(TelaCPF.this, Chat.class);
+            startActivity(intent);
+            finish();
         } else {
             Toast.makeText(TelaCPF.this, "Resposta inválida do servidor", Toast.LENGTH_SHORT).show();
         }
@@ -92,7 +98,7 @@ public class TelaCPF extends AppCompatActivity {
         JSONObject json = new JSONObject();
         try {
             json.put("cpf", cpf);
-            json.put("tipo", "fisicas");
+            json.put("tipo", Informations.tipo);
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(this, "Erro ao criar JSON", Toast.LENGTH_SHORT).show();
