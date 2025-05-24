@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#FFF8C9"
     tools:context=".Chat">
 
     <TextView
@@ -14,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textColor="#141313"
+        android:textColor="#FF5722"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,35 +21,118 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="49dp"
+        android:layout_height="43dp"
+        android:onClick="voltar"
+        android:tint="#FF5722"
+        app:layout_constraintBottom_toTopOf="@+id/botao_temas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
+    <Button
+        android:id="@+id/botao_temas"
+        android:layout_width="353dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FF0000"
+        android:text="VER TEMAS MAIS COMENTADOS"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/card_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logado" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="12dp"
-        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#FF5722"
+        app:cardCornerRadius="32dp"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="#000000"
-        app:layout_constraintTop_toBottomOf="@id/logado"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardPreventCornerOverlap="false"
+        app:layout_constraintBottom_toTopOf="@id/input_container"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/botao_temas">
 
-        <ScrollView
-            android:id="@+id/scroll_view"
+        <!-- Moldura laranja com cantos arredondados -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="3dp"
-            android:background="#FFFFFF"
-            android:fillViewport="true">
+            android:layout_margin="4dp"
+            android:background="#FF5722"
+            android:clipToOutline="true"
+            android:outlineProvider="background"
+            android:padding="3dp">
 
-            <LinearLayout
-                android:id="@+id/messages_layout"
+            <!-- Conteúdo branco interno, com cantos arredondados via clipToOutline -->
+            <ScrollView
+                android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="12dp" />
-        </ScrollView>
+                android:layout_height="match_parent"
+                android:background="#FFF8C9"
+                android:clipToOutline="true"
+                android:fillViewport="true"
+                android:outlineProvider="background"
+                android:padding="3dp">
+
+                <LinearLayout
+                    android:id="@+id/messages_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp" />
+            </ScrollView>
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <!-- Container do input para enviar mensagens -->
+    <LinearLayout
+        android:id="@+id/input_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FF5722"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="Digite sua mensagem"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="17.5sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#FF5722"
+            android:text="Enviar"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,10 @@ import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -28,6 +31,7 @@ public class Chat extends AppCompatActivity {
     private LinearLayout messagesLayout;
     private ScrollView scrollView;
     private Socket socket;
+    private TextView loadingTextView;
 
     {
         try {
@@ -41,56 +45,92 @@ public class Chat extends AppCompatActivity {
         }
     }
 
+    // Listener para carregar mensagens anteriores (histórico)
     private final Emitter.Listener onPreviousMessages = args -> runOnUiThread(() -> {
+        messagesLayout.removeAllViews();  // Remove tudo, inclusive a mensagem de carregando
+
         if (args.length > 0 && args[0] instanceof JSONArray) {
             JSONArray messages = (JSONArray) args[0];
-            for (int i = 0; i < messages.length(); i++) {
-                JSONObject msg = messages.optJSONObject(i);
-                if (msg == null) continue;
 
-                String nome = msg.optString("nome", "Desconhecido");
-                String cpf = msg.optString("cpf", "");
-                String mensagem = msg.optString("message", "");
+            if (messages.length() == 0) {
+                addEmptyMessageView("Nenhuma mensagem ainda. Envie a primeira!");
+            } else {
+                for (int i = 0; i < messages.length(); i++) {
+                    JSONObject msg = messages.optJSONObject(i);
+                    if (msg == null) continue;
 
-                boolean isLogado = cpf.equals(Informations.CPF);
-                addMessageToLayout(nome, mensagem, isLogado);
+                    String nome = msg.optString("nome", "Desconhecido");
+                    String cpf = msg.optString("cpf", "");
+                    String mensagem = msg.optString("message", "");
+
+                    boolean isLogado = cpf.equals(Informations.CPF);
+                    addMessageToLayout(nome, mensagem, isLogado);
+                }
             }
             scrollView.post(() -> scrollView.fullScroll(ScrollView.FOCUS_DOWN));
         }
     });
 
+    // Novo listener para mensagem nova em tempo real
+    private final Emitter.Listener onNewMessage = args -> runOnUiThread(() -> {
+        if (args.length > 0 && args[0] instanceof JSONObject) {
+            JSONObject msg = (JSONObject) args[0];
+
+            String nome = msg.optString("nome", "Desconhecido");
+            String cpf = msg.optString("cpf", "");
+            String mensagem = msg.optString("message", "");
+
+            boolean isLogado = cpf.equals(Informations.CPF);
+
+            addMessageToLayout(nome, mensagem, isLogado);
+
+            scrollView.post(() -> scrollView.fullScroll(ScrollView.FOCUS_DOWN));
+        }
+    });
+
+    private void addEmptyMessageView(String text) {
+        TextView emptyView = new TextView(this);
+        emptyView.setText(text);
+        emptyView.setTextColor(Color.BLACK);
+        emptyView.setTextSize(24);
+        emptyView.setGravity(Gravity.CENTER);
+        emptyView.setTypeface(null, android.graphics.Typeface.BOLD);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(20, 40, 20, 40);
+        emptyView.setLayoutParams(params);
+        messagesLayout.addView(emptyView);
+    }
+
     private void addMessageToLayout(String nome, String mensagem, boolean isLogado) {
         TextView textView = new TextView(this);
-        // Nome e mensagem separados por linha
         textView.setText(nome + "\n\n" + mensagem);
         textView.setTextColor(Color.WHITE);
         textView.setTextSize(16);
+        textView.setTypeface(null, android.graphics.Typeface.BOLD);
         textView.setPadding(20, 16, 20, 16);
 
-        // Criar fundo arredondado
         GradientDrawable background = new GradientDrawable();
-        background.setCornerRadius(24); // arredondamento em px
+        background.setCornerRadius(24);
         if (isLogado) {
-            background.setColor(Color.parseColor("blue")); // cor para usuário logado
+            background.setColor(Color.BLUE);
         } else {
             background.setColor(generateColorFromName(nome));
         }
         textView.setBackground(background);
 
+        int metadeDaTela = getResources().getDisplayMetrics().widthPixels / 2;
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
+                metadeDaTela,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-
-        if (isLogado) {
-            params.gravity = Gravity.END;
-        } else {
-            params.gravity = Gravity.START;
-        }
-
         params.setMargins(20, 10, 20, 10);
-        textView.setLayoutParams(params);
+        params.gravity = isLogado ? Gravity.END : Gravity.START;
 
+        textView.setLayoutParams(params);
         messagesLayout.addView(textView);
     }
 
@@ -121,10 +161,26 @@ public class Chat extends AppCompatActivity {
         scrollView = findViewById(R.id.scroll_view);
         messagesLayout = findViewById(R.id.messages_layout);
 
+        // Mensagem de carregamento
+        loadingTextView = new TextView(this);
+        loadingTextView.setText("Carregando mensagens...");
+        loadingTextView.setTextColor(Color.BLACK);
+        loadingTextView.setTypeface(null, android.graphics.Typeface.BOLD);
+        loadingTextView.setTextSize(24);
+        loadingTextView.setGravity(Gravity.CENTER);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(20, 40, 20, 40);
+        loadingTextView.setLayoutParams(params);
+        messagesLayout.addView(loadingTextView);
+
+        // Escuta eventos
         socket.on("previousMessages", onPreviousMessages);
+        socket.on("newMessage", onNewMessage);  // **IMPORTANTE:** escutar evento de mensagens novas
         socket.connect();
 
-        // Emitir para carregar mensagens da sala correta
         JSONObject joinData = new JSONObject();
         try {
             joinData.put("cpf", Informations.CPF);
@@ -133,6 +189,32 @@ public class Chat extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        // Envio de mensagem
+        EditText messageInput = findViewById(R.id.message_input);
+        Button sendButton = findViewById(R.id.send_button);
+
+        sendButton.setOnClickListener(v -> {
+            String mensagem = messageInput.getText().toString().trim();
+            if (!mensagem.isEmpty()) {
+                JSONObject msgObj = new JSONObject();
+                try {
+                    msgObj.put("nome", Informations.nome);
+                    msgObj.put("cpf", Informations.CPF);
+                    msgObj.put("message", mensagem);
+                    socket.emit("sendMessage", msgObj);
+                    messageInput.setText(""); // limpa campo após envio
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void voltar(View view) {
+        Intent intent = new Intent(Chat.this, TelaCPF.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -140,5 +222,6 @@ public class Chat extends AppCompatActivity {
         super.onDestroy();
         socket.disconnect();
         socket.off("previousMessages", onPreviousMessages);
+        socket.off("newMessage", onNewMessage);
     }
 }
