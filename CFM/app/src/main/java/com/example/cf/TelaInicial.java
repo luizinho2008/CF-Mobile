@@ -1,7 +1,6 @@
 package com.example.cf;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class TelaInicial extends AppCompatActivity {
