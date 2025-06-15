@@ -4,112 +4,200 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".TelaInicial">
 
-    <!-- View superior -->
-
-    <!-- Texto título -->
-
-    <!-- Botões - organizados em linha horizontal com espaço igual -->
-
-    <!-- View inferior -->
-
+    <!-- Faixa superior -->
     <View
         android:id="@+id/topView"
         android:layout_width="0dp"
-        android:layout_height="142dp"
+        android:layout_height="100dp"
         android:background="#FFEC9C"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Texto título -->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:text="Seção - Deficiências"
         android:textColor="#020202"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topView" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="156dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="#028DFF"
-        android:text="Físicas"
-        android:textSize="24sp"
-        android:textStyle="bold"
+    <!-- Logo ou ícone superior -->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="89dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topView"
+        app:srcCompat="@drawable/cf" />
+
+    <!-- Quadrado/Card linha de cima - Físicas -->
+
+    <!-- Quadrado/Card linha de cima - Sensoriais -->
+    <FrameLayout
+        android:id="@+id/cardFisicas"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="40dp"
+        android:background="#24CDF0"
+        android:onClick="fisicas"
+        app:layout_constraintEnd_toStartOf="@id/cardSensoriais"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView2"
-        app:layout_constraintWidth_percent="0.22" />
+        app:layout_constraintWidth_percent="0.45">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="143dp"
-        android:layout_height="81dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="48dp"
-        android:backgroundTint="#FF9800"
-        android:text="Neurodivergentes"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        <ImageView
+            android:id="@+id/imageFisicas"
+            android:layout_width="158dp"
+            android:layout_height="81dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ic_fisica" />
+
+        <TextView
+            android:id="@+id/textFisicas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="16dp"
+            android:text="Físicas"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/cardSensoriais"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="40dp"
+        android:background="#FF9800"
+        android:onClick="sensoriais"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardFisicas"
         app:layout_constraintTop_toBottomOf="@id/textView2"
-        app:layout_constraintWidth_percent="0.22" />
+        app:layout_constraintWidth_percent="0.45">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="155dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="180dp"
-        android:backgroundTint="#9C27B0"
-        android:text="Sensoriais"
-        android:textStyle="bold"
-        android:textSize="24sp"
+        <ImageView
+            android:id="@+id/imageSensoriais"
+            android:layout_width="166dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ic_sensorial" />
+
+        <TextView
+            android:id="@+id/textSensoriais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="16dp"
+            android:text="Sensoriais"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Quadrado/Card linha de baixo - Intelectuais -->
+    <FrameLayout
+        android:id="@+id/cardIntelectuais"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="16dp"
+        android:background="#9C27B0"
+        android:onClick="intelectuais"
+        app:layout_constraintEnd_toStartOf="@id/cardNeurodivergentes"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView2"
-        app:layout_constraintWidth_percent="0.22" />
+        app:layout_constraintTop_toBottomOf="@id/cardFisicas"
+        app:layout_constraintWidth_percent="0.45">
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="149dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="48dp"
-        android:backgroundTint="#FF578E"
-        android:text="Intelectuais"
+        <ImageView
+            android:id="@+id/imageIntelectuais"
+            android:layout_width="157dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ic_intelectual" />
+
+        <TextView
+            android:id="@+id/textIntelectuais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="16dp"
+            android:text="Intelectuais"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Quadrado/Card linha de baixo - Neurodivergentes -->
+    <FrameLayout
+        android:id="@+id/cardNeurodivergentes"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="16dp"
+        android:background="#FA709D"
+        android:onClick="neurodivergentes"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@id/textView2"
-        app:layout_constraintWidth_percent="0.22" />
+        app:layout_constraintStart_toEndOf="@id/cardIntelectuais"
+        app:layout_constraintTop_toBottomOf="@id/cardSensoriais"
+        app:layout_constraintWidth_percent="0.45">
 
+        <ImageView
+            android:id="@+id/imageNeurodivergentes"
+            android:layout_width="160dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ic_neurodivergente" />
+
+        <TextView
+            android:id="@+id/textNeurodivergentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="16dp"
+            android:text="Neurodivergentes"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Faixa inferior -->
     <View
         android:id="@+id/bottomView"
-        android:layout_width="0dp"
-        android:layout_height="125dp"
+        android:layout_width="409dp"
+        android:layout_height="57dp"
         android:background="#FFEC9C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="89dp"
-        android:layout_height="73dp"
-        app:srcCompat="@drawable/cf"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="62dp" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="conexaofamiliar.cf@gmail.com"
+        android:textColor="#660707"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
