@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CF"
         tools:targetApi="31">
         <activity
+            android:name=".TelaInicial"
+            android:exported="false" />
+        <activity
             android:name=".TelaCPF"
             android:exported="false" />
         <activity
@@ -23,7 +26,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".TelaInicial"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
