@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -37,16 +38,17 @@
 
     <Button
         android:id="@+id/botao_temas"
-        android:layout_width="353dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:backgroundTint="#FF0000"
         android:text="VER TEMAS MAIS COMENTADOS"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/card_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logado" />
 
@@ -55,35 +57,27 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="12dp"
-        app:cardBackgroundColor="#FF5722"
+        app:cardBackgroundColor="@android:color/transparent"
         app:cardCornerRadius="32dp"
-        app:cardElevation="0dp"
+        app:cardElevation="4dp"
         app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toTopOf="@id/input_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/botao_temas">
 
-        <!-- Moldura laranja com cantos arredondados -->
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:background="#FF5722"
-            android:clipToOutline="true"
-            android:outlineProvider="background"
-            android:padding="3dp">
+            android:orientation="vertical"
+            android:background="@drawable/borda_laranja">
 
-            <!-- Conteúdo branco interno, com cantos arredondados via clipToOutline -->
             <ScrollView
                 android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFF8C9"
-                android:clipToOutline="true"
-                android:fillViewport="true"
-                android:outlineProvider="background"
-                android:padding="3dp">
+                android:fillViewport="true">
 
                 <LinearLayout
                     android:id="@+id/messages_layout"
@@ -92,11 +86,11 @@
                     android:orientation="vertical"
                     android:padding="12dp" />
             </ScrollView>
-        </FrameLayout>
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <!-- Container do input para enviar mensagens -->
     <LinearLayout
         android:id="@+id/input_container"
         android:layout_width="0dp"
