@@ -28,29 +28,13 @@
         android:layout_height="43dp"
         android:onClick="voltar"
         android:tint="#FF5722"
-        app:layout_constraintBottom_toTopOf="@+id/botao_temas"
+        app:layout_constraintBottom_toTopOf="@id/card_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.58"
         app:srcCompat="@android:drawable/ic_menu_revert" />
-
-    <Button
-        android:id="@+id/botao_temas"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:backgroundTint="#FF0000"
-        android:text="VER TEMAS MAIS COMENTADOS"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/card_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logado" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_container"
@@ -62,10 +46,10 @@
         app:cardElevation="4dp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toBottomOf="@id/logado"
         app:layout_constraintBottom_toTopOf="@id/input_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/botao_temas">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"

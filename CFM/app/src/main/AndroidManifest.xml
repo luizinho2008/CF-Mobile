@@ -16,7 +16,11 @@
         android:theme="@style/Theme.CF"
         tools:targetApi="31">
         <activity
-            android:name=".TelaInicial"
+            android:name=".ChatBot"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".TelaCPF"
@@ -26,7 +30,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".TelaInicial"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

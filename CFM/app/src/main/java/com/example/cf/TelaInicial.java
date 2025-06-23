@@ -1,6 +1,8 @@
 package com.example.cf;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -24,5 +26,10 @@ public class TelaInicial extends AppCompatActivity {
     }
     public void sensoriais(View v) {
         Toast.makeText(this, "Indo pra tela sensoriais", Toast.LENGTH_SHORT).show();
+    }
+
+    public void chatbot(View v) {
+        Intent intent = new Intent(TelaInicial.this, ChatBot.class);
+        startActivity(intent);
     }
 }
