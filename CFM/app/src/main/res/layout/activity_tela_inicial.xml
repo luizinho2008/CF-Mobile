@@ -8,82 +8,60 @@
     tools:context=".TelaInicial">
 
     <!-- Faixa superior -->
-    <View
-        android:id="@+id/topView"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="#FFEC9C"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Texto título -->
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="421dp"
+        android:layout_height="71dp"
+        android:background="#FFEC9C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Logo -->
+
+    <!-- Card Físicas -->
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Seção - Deficiências"
+        android:layout_marginTop="24dp"
+        android:text="Seção"
         android:textColor="#020202"
-        android:textSize="34sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/topView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/topView" />
 
-    <!-- Logo -->
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="89dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="51dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/topView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/cf"/>
-
-    <!-- Card Físicas -->
-    <FrameLayout
-        android:id="@+id/cardFisicas"
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="40dp"
-        android:background="#24CDF0"
-        android:onClick="fisicas"
-        app:layout_constraintTop_toBottomOf="@id/textView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cardSensoriais"
-        app:layout_constraintWidth_percent="0.45">
-
-        <ImageView
-            android:layout_width="158dp"
-            android:layout_height="81dp"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="16dp"
-            app:srcCompat="@drawable/ic_fisica"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="16dp"
-            android:text="Físicas"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-    </FrameLayout>
+        app:srcCompat="@drawable/cf" />
 
     <!-- Card Sensoriais -->
+
+    <!-- Card Intelectuais -->
     <FrameLayout
         android:id="@+id/cardSensoriais"
         android:layout_width="0dp"
         android:layout_height="130dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:background="#FF9800"
         android:onClick="sensoriais"
-        app:layout_constraintTop_toBottomOf="@id/textView2"
-        app:layout_constraintStart_toEndOf="@id/cardFisicas"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardFisicas"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintWidth_percent="0.45">
 
         <ImageView
@@ -91,7 +69,7 @@
             android:layout_height="74dp"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="16dp"
-            app:srcCompat="@drawable/ic_sensorial"/>
+            app:srcCompat="@drawable/ic_sensorial" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,51 +79,49 @@
             android:text="Sensoriais"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </FrameLayout>
 
-    <!-- Card Intelectuais -->
     <FrameLayout
-        android:id="@+id/cardIntelectuais"
+        android:id="@+id/cardFisicas"
         android:layout_width="0dp"
         android:layout_height="130dp"
-        android:layout_marginTop="16dp"
-        android:background="#9C27B0"
-        android:onClick="intelectuais"
-        app:layout_constraintTop_toBottomOf="@id/cardFisicas"
+        android:layout_marginTop="12dp"
+        android:background="#24CDF0"
+        android:onClick="fisicas"
+        app:layout_constraintEnd_toStartOf="@id/cardSensoriais"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cardNeurodivergentes"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintWidth_percent="0.45">
 
         <ImageView
-            android:layout_width="157dp"
-            android:layout_height="72dp"
+            android:layout_width="158dp"
+            android:layout_height="81dp"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="16dp"
-            app:srcCompat="@drawable/ic_intelectual"/>
+            app:srcCompat="@drawable/ic_fisica" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="16dp"
-            android:text="Intelectuais"
+            android:text="Físicas"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </FrameLayout>
 
-    <!-- Card Neurodivergentes -->
     <FrameLayout
         android:id="@+id/cardNeurodivergentes"
         android:layout_width="0dp"
         android:layout_height="130dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="#FA709D"
         android:onClick="neurodivergentes"
-        app:layout_constraintTop_toBottomOf="@id/cardSensoriais"
-        app:layout_constraintStart_toEndOf="@id/cardIntelectuais"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardIntelectuais"
+        app:layout_constraintTop_toBottomOf="@id/cardSensoriais"
         app:layout_constraintWidth_percent="0.45">
 
         <ImageView
@@ -153,7 +129,7 @@
             android:layout_height="74dp"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="16dp"
-            app:srcCompat="@drawable/ic_neurodivergente"/>
+            app:srcCompat="@drawable/ic_neurodivergente" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -163,8 +139,40 @@
             android:text="Neurodivergentes"
             android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/cardIntelectuais"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="12dp"
+        android:background="#9C27B0"
+        android:onClick="intelectuais"
+        app:layout_constraintEnd_toStartOf="@id/cardNeurodivergentes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardFisicas"
+        app:layout_constraintWidth_percent="0.45">
+
+        <ImageView
+            android:layout_width="157dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ic_intelectual" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="16dp"
+            android:text="Intelectuais"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Card Neurodivergentes -->
 
     <!-- Faixa inferior -->
     <View
