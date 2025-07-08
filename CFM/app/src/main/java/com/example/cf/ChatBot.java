@@ -25,7 +25,7 @@ public class ChatBot extends AppCompatActivity {
 
     private static final String TAG = "ChatBot";
     // *** ALTERADO AQUI: O PROJECT_ID AGORA APONTA PARA ONDE O AUTISMBOT ESTÁ ***
-    private static final String PROJECT_ID = "deficienciasbot-ravi";
+    private static final String PROJECT_ID = "autismobot-durv";
 
     private EditText editTextMessage;
     private Button buttonSend;
