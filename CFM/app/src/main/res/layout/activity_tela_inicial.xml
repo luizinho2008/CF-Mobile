@@ -209,6 +209,7 @@
         android:backgroundTint="#001AFF"
         android:onClick="chatbot"
         android:text="Ir para o ChatBot"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/bottomView"
