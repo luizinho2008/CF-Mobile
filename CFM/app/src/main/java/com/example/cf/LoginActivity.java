@@ -11,10 +11,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-//        TextView signUp = findViewById(R.id.textSignUp);
-//        signUp.setOnClickListener(v -> {
-//            Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
-//            startActivity(intent);
-//        });
+        TextView signUp = findViewById(R.id.login);
+        signUp.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
+            startActivity(intent);
+        });
     }
 }
