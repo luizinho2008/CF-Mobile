@@ -16,6 +16,18 @@
         android:theme="@style/Theme.CF"
         tools:targetApi="31">
         <activity
+            android:name=".Poliomielite"
+            android:exported="false" />
+        <activity
+            android:name=".Plegia"
+            android:exported="false" />
+        <activity
+            android:name=".Nanismo"
+            android:exported="false" />
+        <activity
+            android:name=".Amputacao"
+            android:exported="false" />
+        <activity
             android:name=".CadastroActivity"
             android:exported="false" />
         <activity

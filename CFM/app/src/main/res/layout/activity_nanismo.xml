@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECEFF4">
+
+    <!-- Barra superior -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#18D4DA"
+        android:text="NANISMO"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Card 1 - Amputação -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAmputacao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvSubtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nanismo"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingBottom="6dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DD6E1E"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/tvContent1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="O nanismo é uma condição que resulta em estatura significativamente abaixo da média, mas não define o potencial ou a dignidade de alguém. Cada indivíduo é único e valioso, com habilidades, sonhos e contribuições únicas para oferecer ao mundo. A verdadeira grandeza está na maneira como abraçamos nossa singularidade e inspiramos os outros com nosso espírito resiliente e determinação inabalável."
+                android:textColor="#333333"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card 2 - O que é? -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardOQueE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/cardAmputacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvSubtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O que é?"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:paddingBottom="6dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DD6E1E"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/tvContent2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="O nanismo é uma condição genética ou médica caracterizada por um crescimento significativamente abaixo da média esperada para a idade e sexo de uma pessoa. Pode resultar de diversas causas, afetando principalmente o desenvolvimento ósseo e, ocasionalmente, outros aspectos do corpo. Embora tenha impactos físicos, o nanismo não define a capacidade intelectual, emocional ou o valor de uma pessoa."
+                android:textColor="#333333"
+                android:textSize="14sp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Layout dos botões (Material 1, 2, 3) -->
+    <LinearLayout
+        android:id="@+id/layoutButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cardOQueE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnMaterial1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:backgroundTint="#197F87"
+            android:text="Material 1\nPessoas com\nNanismo:\ne seus direitos"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/btnMaterial2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:backgroundTint="#197F87"
+            android:text="Material 2\nInstagram\nANNABRA -\nAssociação\nNanismo Brasil"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/btnMaterial3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:backgroundTint="#218A92"
+            android:text="Material 3\nAmbientes\nacessíveis a\na pessoa com Nanismo"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- Botão inferior -->
+    <Button
+        android:id="@+id/btnForum"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="Clique aqui para entrar no fórum!"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:background="#18D4DA"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
