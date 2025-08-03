@@ -16,6 +16,33 @@
         android:theme="@style/Theme.CF"
         tools:targetApi="31">
         <activity
+            android:name=".Dislexia"
+            android:exported="false" />
+        <activity
+            android:name=".Autismo"
+            android:exported="false" />
+        <activity
+            android:name=".TDAH"
+            android:exported="false" />
+        <activity
+            android:name=".Williams"
+            android:exported="false" />
+        <activity
+            android:name=".Angelman"
+            android:exported="false" />
+        <activity
+            android:name=".Cri"
+            android:exported="false" />
+        <activity
+            android:name=".Down"
+            android:exported="false" />
+        <activity
+            android:name=".Surdez"
+            android:exported="false" />
+        <activity
+            android:name=".Cegueira"
+            android:exported="false" />
+        <activity
             android:name=".Poliomielite"
             android:exported="false" />
         <activity

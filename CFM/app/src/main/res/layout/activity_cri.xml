@@ -4,39 +4,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="#ECEFF4"
+    android:fillViewport="true"
     android:clipToPadding="false"
-    android:paddingBottom="10dp">
+    android:paddingBottom="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#C9FFFA"
-        android:fitsSystemWindows="true">
+        android:background="#D9C3FF">
 
+        <!-- Título -->
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="416dp"
+            android:layout_width="0dp"
             android:layout_height="70dp"
-            android:background="#18D4DA"
-            android:gravity="center_horizontal"
-            android:paddingTop="20dp"
-            android:shadowColor="#55000000"
-            android:shadowDx="0"
-            android:shadowDy="1"
-            android:shadowRadius="1"
-            android:text="AMPUTAÇÃO"
+            android:layout_marginTop="27.5dp"
+            android:background="#9C27B0"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="SÍNDROME DO CRI"
             android:textColor="#000000"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Card 1 -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardAmputacao"
+            android:id="@+id/card1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -58,11 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="6dp"
-                    android:shadowColor="#55000000"
-                    android:shadowDx="0"
-                    android:shadowDy="1"
-                    android:shadowRadius="1"
-                    android:text="Amputação"
+                    android:text="Síndrome do Cri"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -71,25 +64,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="6dp"
-                    android:background="#18D4DA" />
+                    android:background="#9C27B0" />
 
                 <TextView
                     android:id="@+id/tvContent1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:shadowColor="#22000000"
-                    android:shadowDx="0"
-                    android:shadowDy="1"
-                    android:shadowRadius="1"
-                    android:text="A amputação é uma jornada desafiadora, mas não define quem você é. É um processo de adaptação física, emocional e espiritual, onde encontrar apoio e aceitar ajuda são essenciais. Cada passo diante é uma vitória, fortalecendo sua determinação e revelando novas perspectivas de vida."
+                    android:text="A síndrome de Cri du Chat é uma condição genética rara causada pela perda parcial do cromossomo 5, que pode levar a desafios no desenvolvimento motor, cognitivo e na comunicação. Embora a condição apresente dificuldades, é importante lembrar que cada pessoa com síndrome de Cri du Chat possui seu próprio potencial e habilidades. Com o suporte adequado, como terapias e compreensão, é possível melhorar a qualidade de vida e alcançar conquistas significativas. O amor e a paciência de familiares e cuidadores são essenciais para ajudar cada indivíduo a prosperar. A aceitação e a inclusão são fundamentais para enfrentar os desafios e celebrar as vitórias únicas."
                     android:textColor="#333333"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Card 2 -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardOQueE"
+            android:id="@+id/card2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -100,7 +90,7 @@
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardAmputacao">
+            app:layout_constraintTop_toBottomOf="@id/card1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -113,10 +103,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="6dp"
-                    android:shadowColor="#55000000"
-                    android:shadowDx="0"
-                    android:shadowDy="1"
-                    android:shadowRadius="1"
                     android:text="O que é?"
                     android:textColor="#000000"
                     android:textSize="20sp"
@@ -126,23 +112,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="6dp"
-                    android:background="#18D4DA" />
+                    android:background="#9C27B0" />
 
                 <TextView
                     android:id="@+id/tvContent2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:shadowColor="#22000000"
-                    android:shadowDx="0"
-                    android:shadowDy="1"
-                    android:shadowRadius="1"
-                    android:text="Amputação é a remoção cirúrgica parcial ou total de um membro do corpo humano devido a condições médicas como lesões traumáticas graves, doenças vasculares avançadas, infecções ou tumores. O objetivo é melhorar a qualidade de vida, aliviar a dor e prevenir complicações sérias."
+                    android:text="A síndrome de Cri du Chat é uma condição genética rara causada pela perda parcial do cromossomo 5. Caracteriza-se por um choro agudo similar ao de um gato, características faciais distintas, e pode envolver atrasos no desenvolvimento motor e cognitivo, além de problemas de saúde associados como defeitos cardíacos. Com intervenções precoces e suporte, incluindo terapias e educação adaptada, as pessoas com a síndrome podem desenvolver habilidades e ter uma vida plena. O apoio e a compreensão são essenciais para promover o bem-estar e a inclusão."
                     android:textColor="#333333"
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Layout dos botões -->
         <LinearLayout
             android:id="@+id/layoutButtons"
             android:layout_width="0dp"
@@ -154,7 +137,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardOQueE">
+            app:layout_constraintTop_toBottomOf="@id/card2">
 
             <Button
                 android:id="@+id/btnMaterial1"
@@ -162,14 +145,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="#197F87"
+                android:backgroundTint="#009999"
                 android:gravity="center"
-                android:padding="8dp"
-                android:shadowColor="#55000000"
-                android:shadowDx="0"
-                android:shadowDy="1"
-                android:shadowRadius="1"
-                android:text="Material 1: Tipos de Amputações\nCausas e Níveis"
+                android:text="Material 1\nSíndrome de Cri Du\nJORNAL USP"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
@@ -179,14 +157,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="#197F87"
+                android:backgroundTint="#009999"
                 android:gravity="center"
-                android:padding="8dp"
-                android:shadowColor="#55000000"
-                android:shadowDx="0"
-                android:shadowDy="1"
-                android:shadowRadius="1"
-                android:text="Material 2: Guia de Orientações\npara Paciente Amputado"
+                android:text="Material 2\nVídeo\nSíndrome de Cri Du Chat - Síndrome do Miado de Gato"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
@@ -196,18 +169,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="#218A92"
+                android:backgroundTint="#009999"
                 android:gravity="center"
-                android:padding="8dp"
-                android:shadowColor="#55000000"
-                android:shadowDx="0"
-                android:shadowDy="1"
-                android:shadowRadius="1"
-                android:text="Material 3: Material de Apoio\nDeficiência Física"
+                android:text="Material 3\nAssociação Brasileira da\nSíndrome de Cri Du chat"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
         </LinearLayout>
 
+        <!-- Botão inferior -->
         <Button
             android:id="@+id/btnForum"
             android:layout_width="0dp"
@@ -217,20 +186,14 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="48dp"
             android:backgroundTint="#001BFF"
-            android:shadowColor="#55000000"
-            android:shadowDx="0"
-            android:shadowDy="1"
-            android:shadowRadius="1"
             android:text="Clique aqui para entrar no fórum!"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutButtons"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintTop_toBottomOf="@id/layoutButtons" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

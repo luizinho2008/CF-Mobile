@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6F5FF"
+    android:background="#F0E6FF"
     tools:context=".TelaIntelectual">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <!-- Título -->
         <TextView
@@ -30,10 +30,11 @@
             android:id="@+id/textoExplicativo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deficiências intelectuais, não são doenças, mas variações neurológicas que influenciam o comportamento, a atenção e a sensibilidade."
-            android:textSize="16sp"
             android:paddingTop="12dp"
-            android:textColor="#333333" />
+            android:text="Deficiências intelectuais, não são doenças, mas variações neurológicas que influenciam o comportamento, a atenção e a sensibilidade."
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <!-- Cards com botões -->
         <GridLayout
@@ -72,7 +73,7 @@
                     android:layout_width="126dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#A404A4"
-                    android:onClick="abrirDOWN"
+                    android:onClick="abrirDown"
                     android:text="Clique e saiba mais"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
@@ -103,7 +104,7 @@
                     android:layout_width="126dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#A404A4"
-                    android:onClick="abrirCRI"
+                    android:onClick="abrirCri"
                     android:text="Clique e saiba mais"
                     android:textColor="#FFFFFF" />
             </LinearLayout>

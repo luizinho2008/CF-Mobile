@@ -3,26 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6F5FF"
+    android:background="#FFF8E6"
     tools:context=".DeficienciasIntelectuaisActivity">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <!-- Título -->
         <TextView
             android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DEFICIÊNCIAS INTELECTUAIS"
-            android:textColor="#ffffff"
-            android:textSize="22sp"
+            android:background="#FF7700"
             android:gravity="center"
             android:padding="16dp"
-            android:background="#7700FF"
+            android:text="DEFICIÊNCIAS SENSORIAIS"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <!-- Texto explicativo -->
@@ -30,10 +30,11 @@
             android:id="@+id/textoExplicativo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deficiências intelectuais afetam o desenvolvimento cognitivo, dificultando a aprendizagem, a comunicação e a autonomia em diferentes níveis."
-            android:textSize="16sp"
             android:paddingTop="12dp"
-            android:textColor="#333333" />
+            android:text="Deficiências sensoriais afetam a percepção do mundo, impactando a visão, audição, tato, olfato ou paladar, exigindo adaptações para garantir inclusão e acessibilidade."
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <!-- Cards com botões -->
         <GridLayout
@@ -63,8 +64,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="DOWN"
-                    android:textColor="#7700FF"
+                    android:text="CEGUEIRA"
+                    android:textColor="#FF7700"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -72,8 +73,8 @@
                 <Button
                     android:layout_width="126dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#7700FF"
-                    android:onClick="abrirDown"
+                    android:backgroundTint="#FF7700"
+                    android:onClick="abrirCegueira"
                     android:text="Clique e saiba mais"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
@@ -95,81 +96,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="CRI"
-                    android:textColor="#7700FF"
+                    android:text="SURDEZ"
+                    android:textColor="#FF7700"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <Button
                     android:layout_width="126dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#7700FF"
-                    android:onClick="abrirCri"
+                    android:backgroundTint="#FF7700"
+                    android:onClick="abrirSurdez"
                     android:text="Clique e saiba mais"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
 
             <!-- Angelman -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="ANGELMAN"
-                    android:textColor="#7700FF"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:layout_width="126dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#7700FF"
-                    android:onClick="abrirAngelman"
-                    android:text="Clique e saiba mais"
-                    android:textColor="#FFFFFF" />
-            </LinearLayout>
 
             <!-- Poliomielite -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="WILLIAMS"
-                    android:textColor="#7700FF"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:layout_width="126dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#7700FF"
-                    android:onClick="abrirWilliams"
-                    android:text="Clique e saiba mais"
-                    android:textColor="#FFFFFF" />
-            </LinearLayout>
         </GridLayout>
 
     </LinearLayout>

@@ -30,10 +30,11 @@
             android:id="@+id/textoExplicativo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="As deficiências físicas são limitações que afetam a mobilidade, a coordenação motora ou a estrutura corporal. Essas condições exigem atenção, acessibilidade e respeito à diversidade humana."
-            android:textSize="16sp"
             android:paddingTop="12dp"
-            android:textColor="#333333" />
+            android:text="As deficiências físicas são limitações que afetam a mobilidade, a coordenação motora ou a estrutura corporal. Essas condições exigem atenção, acessibilidade e respeito à diversidade humana."
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <!-- Cards com botões -->
         <GridLayout

@@ -3,26 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6F5FF"
+    android:background="#FDE6FF"
     tools:context=".TelaNeurodivergentes">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <!-- Título -->
         <TextView
             android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FF26FB"
+            android:gravity="center"
+            android:padding="16dp"
             android:text="NEURODIVERGENTES"
             android:textColor="#ffffff"
             android:textSize="22sp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:background="#FF26FB"
             android:textStyle="bold" />
 
         <!-- Texto explicativo -->
@@ -30,10 +30,11 @@
             android:id="@+id/textoExplicativo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Neurodivergências, como o autismo e o TDAH, não são doenças, mas variações neurológicas que influenciam o comportamento, a atenção e a sensibilidade."
-            android:textSize="16sp"
             android:paddingTop="12dp"
-            android:textColor="#333333" />
+            android:text="Neurodivergências, como o autismo e o TDAH, não são doenças, mas variações neurológicas que influenciam o comportamento, a atenção e a sensibilidade."
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <!-- Cards com botões -->
         <GridLayout
@@ -46,7 +47,7 @@
             android:rowCount="2"
             android:useDefaultMargins="true">
 
-            <!-- TDH -->
+            <!-- TDAH -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="192dp"
@@ -63,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="TDH"
+                    android:text="TDAH"
                     android:textColor="#FF26FB"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -73,7 +74,7 @@
                     android:layout_width="126dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#FF26FB"
-                    android:onClick="abrirTDH"
+                    android:onClick="abrirTDAH"
                     android:text="Clique e saiba mais"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
@@ -129,8 +130,8 @@
                     android:layout_marginTop="8dp"
                     android:text="DISLEXIA"
                     android:textColor="#FF26FB"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:layout_width="126dp"
