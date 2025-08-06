@@ -1,6 +1,8 @@
 package com.example.cf;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,5 +17,10 @@ public class Nanismo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_nanismo);
+    }
+
+    public void irForum(View view) {
+        startActivity(new Intent(this, TelaCPF.class));
+        Informations.tipo = "fisicas";
     }
 }

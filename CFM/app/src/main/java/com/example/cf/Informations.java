@@ -2,7 +2,7 @@ package com.example.cf;
 
 public class Informations {
     static String CPF;
-    static String tipo = "fisicas";
+    static String tipo = "";
     static String nome;
 
     public String getCPF() {

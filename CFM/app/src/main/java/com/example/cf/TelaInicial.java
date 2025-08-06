@@ -36,8 +36,8 @@ public class TelaInicial extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void chatbot(View v) {
-        Intent intent = new Intent(TelaInicial.this, ChatBot.class);
-        startActivity(intent);
-    }
+//    public void chatbot(View v) {
+//        Intent intent = new Intent(TelaInicial.this, ChatBot.class);
+//        startActivity(intent);
+//    }
 }

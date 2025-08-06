@@ -49,6 +49,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -104,6 +105,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -138,7 +140,7 @@
                     android:text="A plegia, também conhecida como paralisia, é uma condição médica caracterizada pela incapacidade total ou parcial de movimentar um ou mais membros do corpo. Isso ocorre devido a uma fraqueza tão intensa que os músculos não conseguem se contrair, resultando na perda completa dos movimentos. As causas da plegia podem variar, incluindo lesões na medula espinhal, acidentes vasculares cerebrais (AVCs) ou outras condições neurológicas. Além disso, as lesões podem ocorrer nas vias motoras, piramidal ou extrapiramidal, levando a um déficit completo de todos os movimentos."
                     android:textColor="#333333"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -224,6 +226,7 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:onClick="irForum"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
