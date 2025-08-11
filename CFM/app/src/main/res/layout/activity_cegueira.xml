@@ -188,6 +188,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="48dp"
             android:backgroundTint="#001BFF"
+            android:onClick="irForum"
             android:text="Clique aqui para entrar no fórum!"
             android:textColor="#FFFFFF"
             android:textSize="20sp"

@@ -190,6 +190,7 @@
             android:backgroundTint="#001BFF"
             android:text="Clique aqui para entrar no fórum!"
             android:textColor="#FFFFFF"
+            android:onClick="irForum"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
