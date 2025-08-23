@@ -29,7 +29,7 @@ public class TelaCPF extends AppCompatActivity {
             opts.transports = new String[]{"websocket", "polling"};
             opts.reconnection = true;
             opts.forceNew = true;
-            socket = IO.socket("https://conexaofamiliar.onrender.com/", opts);
+            socket = IO.socket("https://ba3dd41c268a.ngrok-free.app", opts);
         } catch (Exception e) {
             e.printStackTrace();
         }
