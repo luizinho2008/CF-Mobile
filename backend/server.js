@@ -28,31 +28,31 @@ const db = mysql.createPool({
     queueLimit: 0
 });
 
-db.query("SELECT 1", (err, results) => {
+db.query("SELECT 1", (err) => {
     if (err) console.error("Erro ao testar conexão:", err);
     else console.log("Conexão efetuada com sucesso");
 });
 
 // Rota para cadastrar novo usuário
 app.post("/cadPost", (req, res) => {
-    const { nome, cpf, idade } = req.body;
+    const { nome, email, senha } = req.body;
 
-    if (!nome || !cpf || !idade) {
+    if (!nome || !email || !senha) {
         return res.status(400).json({ message: "Todos os campos são obrigatórios." });
     }
 
-    getUserByCpf(cpf, (err, user) => {
+    getUserByEmail(email, (err, user) => {
         if (err) {
-            console.error("Erro ao verificar CPF:", err);
+            console.error("Erro ao verificar email:", err);
             return res.status(500).json({ message: "Erro no servidor." });
         }
 
         if (user) {
-            return res.status(400).json({ message: "Já existe um usuário com esse CPF." });
+            return res.status(400).json({ message: "Email já cadastrado." });
         }
 
-        const query = "INSERT INTO users (nome, cpf, idade) VALUES (?, ?, ?)";
-        db.query(query, [nome, cpf, idade], (err, result) => {
+        const query = "INSERT INTO users2(nome, email, senha) VALUES (?, ?, ?)";
+        db.query(query, [nome, email, senha], (err) => {
             if (err) {
                 console.error("Erro ao inserir usuário:", err);
                 return res.status(500).json({ message: "Erro ao cadastrar o usuário." });
@@ -75,9 +75,9 @@ const getTableName = (tipo) => {
     return chatTables[tipo] || null;
 };
 
-// Função para buscar usuário por CPF
-const getUserByCpf = (cpf, callback) => {
-    db.query("SELECT id, nome, cpf FROM users WHERE cpf = ?", [cpf], (err, results) => {
+// Função para buscar usuário por email
+const getUserByEmail = (email, callback) => {
+    db.query("SELECT id, nome, email FROM users WHERE email = ?", [email], (err, results) => {
         if (err) return callback(err, null);
         return callback(null, results.length > 0 ? results[0] : null);
     });
@@ -92,8 +92,8 @@ const loadPreviousMessages = (socket, tipo) => {
     }
 
     db.query(
-        `SELECT users.nome, users.cpf, ${tableName}.message FROM ${tableName} 
-         INNER JOIN users ON ${tableName}.user_id = users.id 
+        `SELECT users.nome, users.email, ${tableName}.message FROM ${tableName}
+         INNER JOIN users ON ${tableName}.user_id = users.id
          ORDER BY ${tableName}.id ASC`,
         (err, results) => {
             if (err) {
@@ -106,7 +106,7 @@ const loadPreviousMessages = (socket, tipo) => {
 };
 
 // Função para inserir nova mensagem
-const insertNewMessage = (socket, tipo, message, userId, userName, cpf) => {
+const insertNewMessage = (socket, tipo, message, userId, userName, email) => {
     const tableName = getTableName(tipo);
     if (!tableName) {
         console.error("Tipo de chat inválido:", tipo);
@@ -120,8 +120,7 @@ const insertNewMessage = (socket, tipo, message, userId, userName, cpf) => {
             if (err) {
                 console.error("Erro ao inserir mensagem:", err);
             } else {
-                // Corrigido: enviar 'nome' ao invés de 'name'
-                io.to(tipo).emit("newMessage", { nome: userName, message, cpf });
+                io.to(tipo).emit("newMessage", { nome: userName, message, email });
             }
         }
     );
@@ -131,7 +130,7 @@ const insertNewMessage = (socket, tipo, message, userId, userName, cpf) => {
 io.on("connection", (socket) => {
     console.log("Usuário conectado");
 
-    socket.on("joinChat", ({ tipo, cpf }) => {
+    socket.on("joinChat", ({ tipo, email }) => {
         const tableName = getTableName(tipo);
         if (!tableName) {
             console.error("Tipo de chat inválido:", tipo);
@@ -139,20 +138,20 @@ io.on("connection", (socket) => {
             return;
         }
 
-        getUserByCpf(cpf, (err, user) => {
+        getUserByEmail(email, (err, user) => {
             if (err) {
-                console.error("Erro ao buscar CPF:", err);
-                socket.emit("cpfInvalid");
+                console.error("Erro ao buscar email:", err);
+                socket.emit("emailInvalid");
             } else if (user) {
                 socket.userId = user.id;
                 socket.userName = user.nome;
-                socket.cpf = user.cpf;
+                socket.email = user.email;
                 socket.room = tipo;
                 socket.join(tipo);
-                socket.emit("cpfValid", { name: user.nome, cpf: user.cpf });
+                socket.emit("emailValid", { name: user.nome, email: user.email });
                 loadPreviousMessages(socket, tipo);
             } else {
-                socket.emit("cpfInvalid");
+                socket.emit("emailInvalid");
             }
         });
     });
@@ -165,7 +164,7 @@ io.on("connection", (socket) => {
                 data.message,
                 socket.userId,
                 socket.userName,
-                socket.cpf
+                socket.email
             );
         }
     });
