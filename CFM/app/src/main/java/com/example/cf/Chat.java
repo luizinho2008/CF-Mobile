@@ -39,7 +39,7 @@ public class Chat extends AppCompatActivity {
             opts.transports = new String[]{"websocket", "polling"};
             opts.reconnection = true;
             opts.forceNew = true;
-            socket = IO.socket("https://conexaofamiliar.onrender.com/", opts);
+            socket = IO.socket("https://d3e958883217.ngrok-free.app", opts);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public class Chat extends AppCompatActivity {
         }
     });
 
-    // Novo listener para mensagem nova em tempo real
+    // Listener para nova mensagem em tempo real
     private final Emitter.Listener onNewMessage = args -> runOnUiThread(() -> {
         if (args.length > 0 && args[0] instanceof JSONObject) {
             JSONObject msg = (JSONObject) args[0];
@@ -81,6 +81,9 @@ public class Chat extends AppCompatActivity {
             String mensagem = msg.optString("message", "");
 
             boolean isLogado = cpf.equals(Informations.CPF);
+
+            // Remove a mensagem de "nenhuma mensagem ainda" se existir
+            removeEmptyMessageView();
 
             addMessageToLayout(nome, mensagem, isLogado);
 
@@ -104,6 +107,18 @@ public class Chat extends AppCompatActivity {
         messagesLayout.addView(emptyView);
     }
 
+    private void removeEmptyMessageView() {
+        for (int i = 0; i < messagesLayout.getChildCount(); i++) {
+            if (messagesLayout.getChildAt(i) instanceof TextView) {
+                TextView tv = (TextView) messagesLayout.getChildAt(i);
+                if (tv.getText().toString().contains("Nenhuma mensagem ainda")) {
+                    messagesLayout.removeView(tv);
+                    break;
+                }
+            }
+        }
+    }
+
     private void addMessageToLayout(String nome, String mensagem, boolean isLogado) {
         TextView textView = new TextView(this);
         textView.setText(nome + "\n\n" + mensagem);
@@ -114,11 +129,8 @@ public class Chat extends AppCompatActivity {
 
         GradientDrawable background = new GradientDrawable();
         background.setCornerRadius(24);
-        if (isLogado) {
-            background.setColor(Color.BLUE);
-        } else {
-            background.setColor(generateColorFromName(nome));
-        }
+        background.setColor(isLogado ? Color.BLUE : generateColorFromName(nome));
+
         textView.setBackground(background);
 
         int metadeDaTela = getResources().getDisplayMetrics().widthPixels / 2;
@@ -178,9 +190,10 @@ public class Chat extends AppCompatActivity {
 
         // Escuta eventos
         socket.on("previousMessages", onPreviousMessages);
-        socket.on("newMessage", onNewMessage);  // **IMPORTANTE:** escutar evento de mensagens novas
+        socket.on("newMessage", onNewMessage);
         socket.connect();
 
+        // Envia dados de join
         JSONObject joinData = new JSONObject();
         try {
             joinData.put("cpf", Informations.CPF);
@@ -202,6 +215,10 @@ public class Chat extends AppCompatActivity {
                     msgObj.put("nome", Informations.nome);
                     msgObj.put("cpf", Informations.CPF);
                     msgObj.put("message", mensagem);
+
+                    // Remove a mensagem de "nenhuma mensagem ainda" antes de enviar
+                    removeEmptyMessageView();
+
                     socket.emit("sendMessage", msgObj);
                     messageInput.setText(""); // limpa campo após envio
                 } catch (Exception e) {
