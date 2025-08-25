@@ -55,14 +55,14 @@
             android:name=".Amputacao"
             android:exported="false" />
         <activity
-            android:name=".CadastroActivity"
+            android:name=".TelaInicial"
             android:exported="false" />
         <activity
             android:name=".ChatBot"
             android:exported="false"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".CadastroActivity"
             android:exported="false" />
         <activity
             android:name=".TelaCPF"
@@ -84,7 +84,7 @@
             android:name=".TelaIntelectual"
             android:exported="false" />
         <activity
-            android:name=".TelaInicial"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

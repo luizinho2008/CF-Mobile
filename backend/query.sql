@@ -8,6 +8,13 @@ CREATE TABLE users (
     idade DATE
 );
 
+CREATE TABLE users2 (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50),
+    email TEXT,
+    senha TEXT
+);
+
 CREATE TABLE msgfisicas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     message TEXT,
