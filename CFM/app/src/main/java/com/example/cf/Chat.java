@@ -39,7 +39,7 @@ public class Chat extends AppCompatActivity {
             opts.transports = new String[]{"websocket", "polling"};
             opts.reconnection = true;
             opts.forceNew = true;
-            socket = IO.socket("https://b96a93478c31.ngrok-free.app/", opts);
+            socket = IO.socket(Informations.link, opts);
         } catch (Exception e) {
             e.printStackTrace();
         }

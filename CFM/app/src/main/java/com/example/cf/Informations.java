@@ -5,6 +5,12 @@ public class Informations {
     static String tipo = "";
     static String nome;
 
+    static String ID;
+    static String usuario;
+    static String email;
+
+    static String link = "https://bb2d2fd647eb.ngrok-free.app";
+
     public String getCPF() {
         return CPF;
     }
@@ -12,8 +18,10 @@ public class Informations {
     public String getTipo() {
         return tipo;
     }
+    public String getLink() { return link; }
+    public String getNome() { return nome; }
 
-    public String getNome() {
-        return nome;
-    }
+    public String getID() { return ID; }
+    public String getUsuario() { return usuario; }
+    public String getEmail() { return email; }
 }
