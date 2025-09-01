@@ -19,26 +19,26 @@ CREATE TABLE msgfisicas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     message TEXT,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users2(id)
 );
 
 CREATE TABLE msgintelectuais (
     id INT AUTO_INCREMENT PRIMARY KEY,
     message TEXT,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users2(id)
 );
 
 CREATE TABLE msgsensoriais (
     id INT AUTO_INCREMENT PRIMARY KEY,
     message TEXT,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users2(id)
 );
 
 CREATE TABLE msgneurodivergentes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     message TEXT,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users2(id)
 );

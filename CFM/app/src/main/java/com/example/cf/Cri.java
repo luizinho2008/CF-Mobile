@@ -20,7 +20,7 @@ public class Cri extends AppCompatActivity {
     }
 
     public void irForum(View view) {
-        startActivity(new Intent(this, TelaCPF.class));
+        startActivity(new Intent(this, Chat.class));
         Informations.tipo = "intelectuais";
     }
 }

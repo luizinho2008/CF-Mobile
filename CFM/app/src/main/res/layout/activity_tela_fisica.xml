@@ -99,7 +99,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#8EDBFF"
-                            android:onClick="abrirNanismo"
+                            android:onClick="abrirAmputacao"
                             android:text="Clique e saiba mais"
                             android:textAllCaps="false"
                             android:textColor="#000000" />

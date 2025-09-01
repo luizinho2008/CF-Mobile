@@ -19,7 +19,7 @@ public class Amputacao extends AppCompatActivity {
         setContentView(R.layout.activity_amputacao);
     }
     public void irForum(View view) {
-        startActivity(new Intent(this, TelaCPF.class));
+        startActivity(new Intent(this, Chat.class));
         Informations.tipo = "fisicas";
     }
 }

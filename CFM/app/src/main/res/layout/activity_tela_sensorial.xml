@@ -76,7 +76,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/amputacao" />
+                        android:src="@drawable/cegueira" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -128,7 +128,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/nanismo" />
+                        android:src="@drawable/surdez" />
 
                     <LinearLayout
                         android:layout_width="0dp"

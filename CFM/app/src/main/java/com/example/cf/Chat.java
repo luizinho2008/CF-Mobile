@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -45,9 +46,9 @@ public class Chat extends AppCompatActivity {
         }
     }
 
-    // Listener para carregar mensagens anteriores (histórico)
+    // Listener para mensagens anteriores
     private final Emitter.Listener onPreviousMessages = args -> runOnUiThread(() -> {
-        messagesLayout.removeAllViews();  // Remove tudo, inclusive a mensagem de carregando
+        messagesLayout.removeAllViews();
 
         if (args.length > 0 && args[0] instanceof JSONArray) {
             JSONArray messages = (JSONArray) args[0];
@@ -60,10 +61,10 @@ public class Chat extends AppCompatActivity {
                     if (msg == null) continue;
 
                     String nome = msg.optString("nome", "Desconhecido");
-                    String cpf = msg.optString("cpf", "");
+                    String email = msg.optString("email", "");
                     String mensagem = msg.optString("message", "");
 
-                    boolean isLogado = cpf.equals(Informations.CPF);
+                    boolean isLogado = email.equals(Informations.email);
                     addMessageToLayout(nome, mensagem, isLogado);
                 }
             }
@@ -77,14 +78,12 @@ public class Chat extends AppCompatActivity {
             JSONObject msg = (JSONObject) args[0];
 
             String nome = msg.optString("nome", "Desconhecido");
-            String cpf = msg.optString("cpf", "");
+            String email = msg.optString("email", "");
             String mensagem = msg.optString("message", "");
 
-            boolean isLogado = cpf.equals(Informations.CPF);
+            boolean isLogado = email.equals(Informations.email);
 
-            // Remove a mensagem de "nenhuma mensagem ainda" se existir
             removeEmptyMessageView();
-
             addMessageToLayout(nome, mensagem, isLogado);
 
             scrollView.post(() -> scrollView.fullScroll(ScrollView.FOCUS_DOWN));
@@ -168,12 +167,11 @@ public class Chat extends AppCompatActivity {
         });
 
         TextView logadoTextView = findViewById(R.id.logado);
-        logadoTextView.setText("Olá, " + Informations.nome + "!");
+        logadoTextView.setText("Olá, " + Informations.usuario + "!");
 
         scrollView = findViewById(R.id.scroll_view);
         messagesLayout = findViewById(R.id.messages_layout);
 
-        // Mensagem de carregamento
         loadingTextView = new TextView(this);
         loadingTextView.setText("Carregando mensagens...");
         loadingTextView.setTextColor(Color.BLACK);
@@ -188,22 +186,21 @@ public class Chat extends AppCompatActivity {
         loadingTextView.setLayoutParams(params);
         messagesLayout.addView(loadingTextView);
 
-        // Escuta eventos
+        // Registrando listeners e conectando socket
         socket.on("previousMessages", onPreviousMessages);
         socket.on("newMessage", onNewMessage);
         socket.connect();
 
-        // Envia dados de join
+        // Enviar joinChat com email e tipo
         JSONObject joinData = new JSONObject();
         try {
-            joinData.put("cpf", Informations.CPF);
+            joinData.put("email", Informations.email);
             joinData.put("tipo", Informations.tipo);
             socket.emit("joinChat", joinData);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // Envio de mensagem
         EditText messageInput = findViewById(R.id.message_input);
         Button sendButton = findViewById(R.id.send_button);
 
@@ -212,20 +209,15 @@ public class Chat extends AppCompatActivity {
             if (!mensagem.isEmpty()) {
                 JSONObject msgObj = new JSONObject();
                 try {
-                    msgObj.put("nome", Informations.nome);
-                    msgObj.put("cpf", Informations.CPF);
-                    msgObj.put("message", mensagem);
-
-                    // Remove a mensagem de "nenhuma mensagem ainda" antes de enviar
-                    removeEmptyMessageView();
-
+                    msgObj.put("message", mensagem); // só envia mensagem
                     socket.emit("sendMessage", msgObj);
-                    messageInput.setText(""); // limpa campo após envio
+                    messageInput.setText("");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
+
     }
 
     public void voltar(View view) {

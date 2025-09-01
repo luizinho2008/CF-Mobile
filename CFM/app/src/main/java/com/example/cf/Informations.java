@@ -9,7 +9,7 @@ public class Informations {
     static String usuario;
     static String email;
 
-    static String link = "https://bb2d2fd647eb.ngrok-free.app";
+    static String link = "https://77039654e5ff.ngrok-free.app";
 
     public String getCPF() {
         return CPF;
