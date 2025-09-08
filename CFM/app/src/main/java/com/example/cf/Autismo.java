@@ -23,4 +23,9 @@ public class Autismo extends AppCompatActivity {
         startActivity(new Intent(this, Chat.class));
         Informations.tipo = "neurodivergentes";
     }
+
+    public void chatbot(View v) {
+        Intent intent = new Intent(Autismo.this, ChatBot.class);
+        startActivity(intent);
+    }
 }

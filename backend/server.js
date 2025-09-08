@@ -12,6 +12,16 @@ const io = new Server(server, { cors: { origin: "*", methods: ["GET", "POST"] } 
 app.use(cors());
 app.use(express.json());
 
+const path = require("path");
+const { SessionsClient } = require("@google-cloud/dialogflow");
+
+// instancia cliente do Dialogflow
+require('dotenv').config(); // no topo do arquivo
+
+const dialogflowClient = new SessionsClient({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
+});
+
 // Conexão com o banco de dados
 const db = mysql.createPool({
     host: "rok3ly.h.filess.io",
@@ -53,6 +63,41 @@ app.post("/cadPost", (req, res) => {
             return res.status(200).json({ message: "Cadastro realizado com sucesso!" });
         });
     });
+});
+
+app.post("/sendMessage1", async (req, res) => {
+  try {
+    const { message, sessionId } = req.body;
+
+    if (!message) {
+      return res.status(400).json({ error: "Mensagem obrigatória" });
+    }
+
+    const sessionPath = dialogflowClient.projectAgentSessionPath(
+      "autismobot-durv", // seu project_id
+      sessionId || "123456"
+    );
+
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        text: {
+          text: message,
+          languageCode: "pt-BR",
+        },
+      },
+    };
+
+    const responses = await dialogflowClient.detectIntent(request);
+    const result = responses[0].queryResult;
+
+    res.json({
+      reply: result.fulfillmentText || "[sem resposta do bot]",
+    });
+  } catch (err) {
+    console.error("Erro no Dialogflow:", err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Login
