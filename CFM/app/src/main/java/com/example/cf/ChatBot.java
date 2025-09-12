@@ -27,7 +27,6 @@ import java.util.List;
 public class ChatBot extends AppCompatActivity {
 
     private static final String TAG = "ChatBot";
-    private static final String BACKEND_URL = Informations.link + "/sendMessage1";
 
     private EditText editTextMessage;
     private Button buttonSend;
@@ -75,16 +74,21 @@ public class ChatBot extends AppCompatActivity {
 
     private void sendMessageToBackend(String texto) {
         try {
-            URL url = new URL(BACKEND_URL);
+            // Monta a URL dinamicamente usando o número do chat
+            String backendUrl = Informations.link + "/sendMessage" + Informations.number;
+            URL url = new URL(backendUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             conn.setDoOutput(true);
 
+            // Cria sessionId único para cada chat
+            String sessionId = "chat" + Informations.number + "_" + System.currentTimeMillis();
+
             // Monta JSON para enviar
             JSONObject json = new JSONObject();
             json.put("message", texto);
-            json.put("sessionId", "123456"); // você pode usar UUID ou qualquer ID único por usuário
+            json.put("sessionId", sessionId);
 
             OutputStream os = conn.getOutputStream();
             os.write(json.toString().getBytes("UTF-8"));

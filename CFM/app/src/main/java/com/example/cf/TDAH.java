@@ -23,4 +23,10 @@ public class TDAH extends AppCompatActivity {
         startActivity(new Intent(this, Chat.class));
         Informations.tipo = "neurodivergentes";
     }
+
+    public void chatbot(View v) {
+        Informations.number = "2";
+        Intent intent = new Intent(TDAH.this, ChatBot.class);
+        startActivity(intent);
+    }
 }

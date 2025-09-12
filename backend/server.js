@@ -22,6 +22,10 @@ const dialogflowClient = new SessionsClient({
   keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
 });
 
+const dialogflowClient2 = new SessionsClient({
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS_2
+});
+
 // Conexão com o banco de dados
 const db = mysql.createPool({
     host: "rok3ly.h.filess.io",
@@ -89,6 +93,41 @@ app.post("/sendMessage1", async (req, res) => {
     };
 
     const responses = await dialogflowClient.detectIntent(request);
+    const result = responses[0].queryResult;
+
+    res.json({
+      reply: result.fulfillmentText || "[sem resposta do bot]",
+    });
+  } catch (err) {
+    console.error("Erro no Dialogflow:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post("/sendMessage2", async (req, res) => {
+  try {
+    const { message, sessionId } = req.body;
+
+    if (!message) {
+      return res.status(400).json({ error: "Mensagem obrigatória" });
+    }
+
+    const sessionPath = dialogflowClient2.projectAgentSessionPath(
+      "tdahbot-cwni", // seu project_id
+      sessionId || "123456"
+    );
+
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        text: {
+          text: message,
+          languageCode: "pt-BR",
+        },
+      },
+    };
+
+    const responses = await dialogflowClient2.detectIntent(request);
     const result = responses[0].queryResult;
 
     res.json({

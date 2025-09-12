@@ -25,6 +25,7 @@ public class Autismo extends AppCompatActivity {
     }
 
     public void chatbot(View v) {
+        Informations.number = "1";
         Intent intent = new Intent(Autismo.this, ChatBot.class);
         startActivity(intent);
     }
