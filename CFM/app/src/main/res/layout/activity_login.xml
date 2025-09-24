@@ -43,7 +43,7 @@
             android:padding="10dp"
             android:textColor="#000000"
             android:textColorHighlight="#C51F1F"
-            android:textColorHint="#000000"
+            android:textColorHint="#818181"
             android:textStyle="bold" />
 
         <!-- SENHA -->
@@ -57,7 +57,7 @@
             android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="#000000"
-            android:textColorHint="#000000"
+            android:textColorHint="#818181"
             android:textStyle="bold" />
 
         <!-- BOTÃO ENTRAR -->
