@@ -9,7 +9,7 @@ public class Informations {
     static String usuario;
     static String email;
 
-    static String link = "https://50a6a67f4168.ngrok-free.app";
+    static String link = "https://2fe4de8ec8d3.ngrok-free.app";
 
     static String number = "";
 

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -34,7 +35,10 @@ public class ChatBot extends AppCompatActivity {
     private MessageAdapter adapter;
     private List<Message> messages = new ArrayList<>();
 
-    // Nova classe interna para representar uma mensagem
+    // 🔑 Mantém a sessão fixa durante a conversa
+    private String sessionId;
+
+    // Classe para representar uma mensagem
     private static class Message {
         String text;
         String sender; // "user" ou "bot"
@@ -60,6 +64,9 @@ public class ChatBot extends AppCompatActivity {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+        // 🔑 Define sessionId fixo para o usuário logado
+        sessionId = "chat_" + Informations.number;
 
         buttonSend.setOnClickListener(v -> {
             String userMessage = editTextMessage.getText().toString().trim();
@@ -89,14 +96,9 @@ public class ChatBot extends AppCompatActivity {
             conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             conn.setDoOutput(true);
 
-            String sessionId = "chat" + Informations.number + "_" + System.currentTimeMillis();
-
             JSONObject json = new JSONObject();
             json.put("message", texto);
-            json.put("sessionId", sessionId);
-            if (Informations.usuario != null && !Informations.usuario.isEmpty()) {
-                json.put("user_name", Informations.usuario);
-            }
+            json.put("sessionId", sessionId); // usa o sessionId fixo
 
             OutputStream os = conn.getOutputStream();
             os.write(json.toString().getBytes("UTF-8"));
@@ -158,9 +160,8 @@ public class ChatBot extends AppCompatActivity {
                 holder.textMessage.setGravity(Gravity.START);
             }
 
-            // Adiciona o prefixo e define o texto em negrito
             holder.textMessage.setText(prefix + message.text);
-            holder.textMessage.setTypeface(null, android.graphics.Typeface.BOLD); // Deixa o texto em negrito
+            holder.textMessage.setTypeface(null, android.graphics.Typeface.BOLD);
             holder.textMessage.setTextColor(MESSAGE_COLOR);
         }
 
