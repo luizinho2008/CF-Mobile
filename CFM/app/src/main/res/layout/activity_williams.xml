@@ -151,37 +151,42 @@
                 android:id="@+id/btnMaterial1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_shape"
                 android:backgroundTint="#009999"
-                android:gravity="center"
+                android:onClick="openLink"
                 android:text="Material 1\nManejo comportamental"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
 
             <Button
                 android:id="@+id/btnMaterial2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="#009999"
-                android:gravity="center"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="#00796B"
+                android:onClick="openLink"
                 android:text="Material 2\nAssociação Brasileira da Síndrome de Williams"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
 
             <Button
                 android:id="@+id/btnMaterial3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="#009999"
-                android:gravity="center"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="#00695C"
+                android:onClick="openLink"
                 android:text="Material 3\nSíndrome de Williams\nFIOCRUZ"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
         </LinearLayout>
 
         <!-- Botão inferior -->
