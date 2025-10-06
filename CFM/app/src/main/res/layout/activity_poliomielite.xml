@@ -165,52 +165,43 @@
                 android:id="@+id/btnMaterial1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="#197F87"
-                android:gravity="center"
-                android:padding="8dp"
-                android:shadowColor="#55000000"
-                android:shadowDx="0"
-                android:shadowDy="1"
-                android:shadowRadius="1"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="#009999"
+                android:onClick="openLink"
                 android:text="Material 1\nPoliomielite (paralisia infantil)"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
 
             <Button
                 android:id="@+id/btnMaterial2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="#197F87"
-                android:gravity="center"
-                android:padding="8dp"
-                android:shadowColor="#55000000"
-                android:shadowDx="0"
-                android:shadowDy="1"
-                android:shadowRadius="1"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="#009999"
+                android:onClick="openLink"
                 android:text="Material 2\nVídeo\nPoliomielite: saiba o que é"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
 
             <Button
                 android:id="@+id/btnMaterial3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:backgroundTint="#218A92"
-                android:gravity="center"
-                android:padding="8dp"
-                android:shadowColor="#55000000"
-                android:shadowDx="0"
-                android:shadowDy="1"
-                android:shadowRadius="1"
+                android:background="@drawable/btn_shape"
+                android:backgroundTint="#009999"
+                android:onClick="openLink"
                 android:text="Material 3\nDoenças no Portal\nFiocruz: Poliomielite"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
         </LinearLayout>
 
         <!-- Botão inferior -->

@@ -141,41 +141,47 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card2">
 
-            <Button
-                android:id="@+id/btnMaterial1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:backgroundTint="#009999"
-                android:gravity="center"
-                android:text="Material 1\n10/11 – Dia Nacional de Prevenção e Combate à Surdez"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+        <Button
+            android:id="@+id/btnMaterial1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_shape"
+            android:backgroundTint="#009999"
+            android:onClick="openLink"
+            android:text="Material 1\n10/11 – Dia Nacional de Prevenção e Combate à Surdez"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="12dp" />
 
             <Button
                 android:id="@+id/btnMaterial2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_shape"
                 android:backgroundTint="#009999"
-                android:gravity="center"
+                android:onClick="openLink"
                 android:text="Material 2\nSurdez:\no que é, sintomas, causas, tipos e tratamento"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
 
             <Button
                 android:id="@+id/btnMaterial3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_shape"
                 android:backgroundTint="#009999"
-                android:gravity="center"
+                android:onClick="openLink"
                 android:text="Material 3\nSurdez"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:padding="12dp" />
         </LinearLayout>
 
         <!-- Botão inferior -->

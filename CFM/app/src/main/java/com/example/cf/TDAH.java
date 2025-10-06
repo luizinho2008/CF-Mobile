@@ -1,6 +1,7 @@
 package com.example.cf;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -28,5 +29,24 @@ public class TDAH extends AppCompatActivity {
         Informations.number = "2";
         Intent intent = new Intent(TDAH.this, ChatBot.class);
         startActivity(intent);
+    }
+
+    // Método único para abrir links externos
+    public void openLink(View view) {
+        String url = "";
+        int id = view.getId();
+
+        if (id == R.id.btnMaterial1) {
+            url = "https://drauziovarella.uol.com.br/videos/coluna/tdah-a-importancia-do-tratamento-durante-a-infancia-e-a-vida-adulta/";
+        } else if (id == R.id.btnMaterial2) {
+            url = "https://draanabeatriz.com.br/mentes-inquietas-tdah-desatencao-hiperatividade-e-impulsividade/";
+        } else if (id == R.id.btnMaterial3) {
+            url = "https://drauziovarella.uol.com.br/pediatria/tdah-transtorno-do-deficit-de-atencao-com-hiperatividade/";
+        }
+
+        if (!url.isEmpty()) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        }
     }
 }
